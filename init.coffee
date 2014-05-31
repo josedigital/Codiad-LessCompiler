@@ -121,6 +121,10 @@ class codiad.LessCompiler
 					if err
 						throw err
 					@saveFile fileName + "css", tree.toCSS(options)
+					# alex mod
+					theurl = fileName.split('/').slice(0, -1).join('/') + '/update.php'
+					@jQuery.get @workspaceUrl + theurl
+					# end alex mod
 					@codiad.message.success 'Less compiled successfully.'
 			catch exception
 				# show error message and editor annotation
